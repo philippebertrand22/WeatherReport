@@ -20,6 +20,7 @@ print(f'R-squared: {lm.score(df[features], df[target]):.3f}')
 print(f'Mean Absolute Error: {df[target].sub(lm.predict(df[features])).abs().mean():.3f}')
 
 """
+EDA
 plt.scatter(df['humidity'], df['temp'])
 plt.scatter(df['precip'], df['temp'])
 plt.xlabel('Humidity, Precipitation')

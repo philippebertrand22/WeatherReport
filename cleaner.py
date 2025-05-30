@@ -7,6 +7,7 @@ df = pd.read_csv('raw.csv', encoding='cp1252')
 df['datetime'] = pd.to_datetime(df['datetime'])
 df['temp_next_day'] = df['temp'].shift(-24)
 df = df.dropna(subset=['temp_next_day'])
+df = df.drop(columns=['icon', 'stations'])
 
 #remove rows with missing values
 df.dropna()
