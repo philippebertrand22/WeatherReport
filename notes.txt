@@ -1,0 +1,2 @@
+1. feed it old data to train the model
+2. feed it recent data to see if it predicts well
