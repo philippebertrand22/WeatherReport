@@ -1,15 +1,29 @@
 #%%
-import csv
 import pandas as pd
+import csv
+from datetime import datetime, timedelta
 
-df = pd.read_csv('raw.csv', encoding='cp1252')
+# Load raw data
+live_data = pd.read_csv('raw.csv', encoding='cp1252')
+
+# Drop unwanted columns
+live_data = live_data.drop(columns=['name', 'icon', 'stations'])
+
+live_data['datetime'] = pd.to_datetime(live_data['datetime'])
+live_data = live_data[live_data['datetime'] > '2025-05-29T23:00:00']
+
+live_data.to_csv('test.csv', index=False, encoding='cp1252')
+
+
+'''
+#cleaned data for taining the model        
+df = pd.read_csv('raw.csv', encoding='cp1252')        
+
+df = df.drop(columns=['name', 'icon', 'stations'])
 
 df['datetime'] = pd.to_datetime(df['datetime'])
 df['temp_next_day'] = df['temp'].shift(-24)
 df = df.dropna(subset=['temp_next_day'])
-df = df.drop(columns=['icon', 'stations'])
-
-#remove rows with missing values
 df.dropna()
 
 df.head()
@@ -22,3 +36,4 @@ with open('cleaned.csv', 'w', newline='') as csvfile:
     # Write the data rows
     for index, row in df.iterrows():
         csv_writer.writerow(row)
+'''

@@ -8,7 +8,7 @@ import codecs
 from datetime import datetime, timedelta
 
 yesterday = datetime.today() - timedelta(days=1)
-few_days_ago = yesterday - timedelta(days=3)
+few_days_ago = yesterday - timedelta(days=1)
 yesterday = yesterday.strftime("%Y-%m-%d")
 few_days_ago = few_days_ago.strftime("%Y-%m-%d")
         
@@ -18,7 +18,7 @@ try:
   # Parse the results as CSV
   csv_text = csv.reader(codecs.iterdecode(ResultBytes, 'utf-8'))
   
-  with open('raw.csv', 'w', newline='') as csvfile:
+  with open('raw.csv', 'a', newline='') as csvfile:
     csv_writer = csv.writer(csvfile)
     for row in csv_text:
       csv_writer.writerow(row)
