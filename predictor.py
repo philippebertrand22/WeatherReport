@@ -24,4 +24,4 @@ live_data = pd.read_csv('test.csv', encoding='cp1252')
 predictions = lm.predict(live_data[features])
 
 live_data['predicted_temp_next_day'] = predictions
-print(live_data[['predicted_temp_next_day']].head())
+print(live_data[['predicted_temp_next_day']])

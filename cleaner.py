@@ -10,12 +10,13 @@ live_data = pd.read_csv('raw.csv', encoding='cp1252')
 live_data = live_data.drop(columns=['name', 'icon', 'stations'])
 
 live_data['datetime'] = pd.to_datetime(live_data['datetime'])
-live_data = live_data[live_data['datetime'] > '2025-05-29T23:00:00']
+#filter for data after a specific date 
+live_data = live_data[live_data['datetime'] > '2025-05-30T23:00:00']
 
 live_data.to_csv('test.csv', index=False, encoding='cp1252')
 
 
-'''
+
 #cleaned data for taining the model        
 df = pd.read_csv('raw.csv', encoding='cp1252')        
 
@@ -36,4 +37,3 @@ with open('cleaned.csv', 'w', newline='') as csvfile:
     # Write the data rows
     for index, row in df.iterrows():
         csv_writer.writerow(row)
-'''

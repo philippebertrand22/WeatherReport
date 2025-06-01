@@ -8,9 +8,12 @@ import codecs
 from datetime import datetime, timedelta
 
 yesterday = datetime.today() - timedelta(days=1)
+#print(yesterday)
 few_days_ago = yesterday - timedelta(days=1)
+#print(few_days_ago)
 yesterday = yesterday.strftime("%Y-%m-%d")
 few_days_ago = few_days_ago.strftime("%Y-%m-%d")
+
         
 try: 
   ResultBytes = urllib.request.urlopen(f"https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Montreal/{few_days_ago}/{yesterday}?unitGroup=metric&include=hours&key=KXQ7UNVYVT72UREE3L7WHCX8K&contentType=csv")
@@ -31,4 +34,5 @@ except  urllib.error.URLError as e:
   ErrorInfo= e.read().decode() 
   print('Error code: ', e.code,ErrorInfo)
   sys.exit()
+
 #%%  
