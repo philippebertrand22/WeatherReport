@@ -6,12 +6,15 @@ from datetime import datetime, timedelta
 # Load raw data
 live_data = pd.read_csv('raw.csv', encoding='cp1252')
 
+yesterday = datetime.today() - timedelta(days=2)
+print(yesterday)
+
 # Drop unwanted columns
 live_data = live_data.drop(columns=['name', 'icon', 'stations'])
 
 live_data['datetime'] = pd.to_datetime(live_data['datetime'])
 #filter for data after a specific date 
-live_data = live_data[live_data['datetime'] > '2025-05-30T23:00:00']
+live_data = live_data[live_data['datetime'] > f'{yesterday}']
 
 live_data.to_csv('test.csv', index=False, encoding='cp1252')
 

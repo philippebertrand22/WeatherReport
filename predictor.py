@@ -24,4 +24,11 @@ live_data = pd.read_csv('test.csv', encoding='cp1252')
 predictions = lm.predict(live_data[features])
 
 live_data['predicted_temp_next_day'] = predictions
+
+plt.scatter(live_data['temp'], live_data['predicted_temp_next_day'])
+plt.xlabel('Current Temperature')
+plt.ylabel('Predicted Temperature Next Day')
+plt.show()
 print(live_data[['predicted_temp_next_day']])
+
+# %%
