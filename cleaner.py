@@ -3,6 +3,7 @@ import pandas as pd
 import csv
 from datetime import datetime, timedelta
 
+'''
 # Load raw data
 live_data = pd.read_csv('raw.csv', encoding='cp1252')
 
@@ -17,7 +18,7 @@ live_data['datetime'] = pd.to_datetime(live_data['datetime'])
 live_data = live_data[live_data['datetime'] > f'{yesterday}']
 
 live_data.to_csv('test.csv', index=False, encoding='cp1252')
-
+'''
 
 
 #cleaned data for taining the model        

@@ -19,7 +19,7 @@ for feature, coef in zip(features, lm.coef_):
 print(f'R-squared: {lm.score(training_data[features], training_data[target]):.3f}')
 print(f'Mean Absolute Error: {training_data[target].sub(lm.predict(training_data[features])).abs().mean():.3f}')
 
-live_data = pd.read_csv('test.csv', encoding='cp1252')
+live_data = pd.read_csv('live.csv', encoding='cp1252')
 
 predictions = lm.predict(live_data[features])
 
@@ -28,7 +28,7 @@ live_data['predicted_temp_next_day'] = predictions
 plt.scatter(live_data['temp'], live_data['predicted_temp_next_day'])
 plt.xlabel('Current Temperature')
 plt.ylabel('Predicted Temperature Next Day')
-plt.show()
+#plt.show()
 print(live_data[['predicted_temp_next_day']])
 
 # %%

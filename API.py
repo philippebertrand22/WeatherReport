@@ -20,6 +20,7 @@ try:
   
   # Parse the results as CSV
   csv_text = csv.reader(codecs.iterdecode(ResultBytes, 'utf-8'))
+  header = next(csv_text, None)  # Read the header row
   
   with open('raw.csv', 'a', newline='') as csvfile:
     csv_writer = csv.writer(csvfile)
